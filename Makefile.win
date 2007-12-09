@@ -1,0 +1,42 @@
+# Project: Fortran Indenter
+# Makefile created by Dev-C++ 4.9.9.2
+
+CPP  = g++.exe
+CC   = gcc.exe
+WINDRES = windres.exe
+RES  = 
+OBJ  = keywords.o lexer.o parser.o symtab.o init_fortran.o $(RES)
+LINKOBJ  = keywords.o lexer.o parser.o symtab.o init_fortran.o $(RES)
+LIBS =  -L"C:/Dev-Cpp/lib"  
+INCS =  -I"C:/Dev-Cpp/include" 
+CXXINCS =  -I"C:/Dev-Cpp/lib/gcc/mingw32/3.4.2/include"  -I"C:/Dev-Cpp/include/c++/3.4.2/backward"  -I"C:/Dev-Cpp/include/c++/3.4.2/mingw32"  -I"C:/Dev-Cpp/include/c++/3.4.2"  -I"C:/Dev-Cpp/include" 
+BIN  = "Fortran Indenter.exe"
+CXXFLAGS = $(CXXINCS)  
+CFLAGS = $(INCS)  
+RM = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before "Fortran Indenter.exe" all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o "Fortran Indenter.exe" $(LIBS)
+
+keywords.o: keywords.c
+	$(CC) -c keywords.c -o keywords.o $(CFLAGS)
+
+lexer.o: lexer.c
+	$(CC) -c lexer.c -o lexer.o $(CFLAGS)
+
+parser.o: parser.c
+	$(CC) -c parser.c -o parser.o $(CFLAGS)
+
+symtab.o: symtab.c
+	$(CC) -c symtab.c -o symtab.o $(CFLAGS)
+
+init_fortran.o: init_fortran.c
+	$(CC) -c init_fortran.c -o init_fortran.o $(CFLAGS)
